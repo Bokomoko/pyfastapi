@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  pydevcontainer:
+    image: python.12
+    volumes:
+      - ../..:/workspaces:cached
+    network_mode: host
+    command: sleep infinity
