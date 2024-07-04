@@ -1,8 +1,12 @@
 version: '3.8'
 services:
   pydevcontainer:
-    image: python.12
+    image: python:3.12
     volumes:
       - ../..:/workspaces:cached
     network_mode: host
-    command: sleep infinity
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # run command to install requirements.txt
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8888", "--reload"]
